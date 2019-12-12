@@ -1,0 +1,22 @@
+<button class="btn btn-primary" [routerLink]='["/shop/add"]'>Add new shop</button>
+
+<div class="row">
+  <table id="card-list" class='table table-striped table-bordered'>
+    <tbody>
+      <tr>
+        <td style="width: 20%">Name</td>
+        <td style="width: 70%">Products</td>
+        <td style="width: 10%">Delete</td>
+      </tr>
+      <tr *ngFor="let shop of shops; let i = index">
+        <td>{{ shop.name }}</td>
+        <td>{{ shop.products }}</td>
+        <td>
+          <button (click)="delete(shop, i)" type="button" class="btn btn-danger btn-sm">
+            <span class="glyphicon glyphicon-trash">Delete</span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

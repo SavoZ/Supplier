@@ -1,0 +1,43 @@
+<div class="offset-lg-3 col-lg-6 mb-6">
+  <div class="card border-0 box-shadow" widget="">
+    <div class="card-header transparent border-0 text-muted">
+      <h5>{{title}}</h5>
+    </div>
+    <div class="card-body widget-body">
+      <div class="ng-untouched ng-pristine ng-valid">
+        <div class="form-group"><input class="form-control" placeholder="Name" type="text" [(ngModel)]="model.name">
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control" placeholder="Limit Value" type="number" [(ngModel)]="limitValue">
+            <span class="input-group-btn">
+              <button class="btn btn-default" (click)="addLimit()">Add limit</button>
+            </span>
+          </div>
+        </div>
+
+        <table class='table table-striped' *ngIf="model.limits.length > 0">
+          <thead>
+            <tr>
+              <th style="width: 80%">Limit Value</th>
+              <th style="width: 20%"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let limit of model.limits; let i = index">
+              <td>{{ limit }}</td>
+              <td class="text-right">
+                <button (click)="deleteLimit(i)" type="button" class="btn btn-danger btn-sm">
+                  <span class="glyphicon glyphicon-trash">Delete</span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button class="btn btn-success" id="submit" type="submit" [disabled]='!model.name && !model.limits.length' (click)="submit()">Submit</button>
+        <button class="btn btn-lught" id="cancel" [routerLink]='["/product"]'>Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
